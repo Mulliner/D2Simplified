@@ -25,9 +25,9 @@ def setup_key_bindings():
         logger.info(f"Hotkey `{keybinding['key']}` bound to `{keybinding['binding']}`")
 
 
-def simplify(skill: dict):
-    mouse.click(skill["binding"])
-    logger.info(f"Simplifying: {skill['key']}, {skill['binding']}")
+def simplify(binding: dict):
+    mouse.click(binding["binding"])
+    logger.info(f"Simplifying: {binding['key']}, {binding['binding']}")
 
 
 if __name__ in "__main__":
