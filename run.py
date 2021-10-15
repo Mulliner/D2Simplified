@@ -1,11 +1,16 @@
 import logging
+import time
 
 import keyboard
 import mouse
 
+from state import state
+
 FORMAT = "%(asctime)s | %(levelname)s | %(message)s"
 logging.basicConfig(level=logging.INFO, format=FORMAT)
 logger = logging.getLogger("D2Simplified")
+
+last_clicked = None
 
 keybinds = [
     {"key": "F1", "binding": mouse.RIGHT},
@@ -26,6 +31,10 @@ def setup_key_bindings():
 
 
 def simplify(binding: dict):
+    if state.last_clicked == binding["key"]:
+        state.last_clicked = binding["key"]
+        time.sleep(0.01)
+    state.last_clicked = binding["key"]
     mouse.click(binding["binding"])
     logger.info(f"Simplifying: {binding['key']}, {binding['binding']}")
 
