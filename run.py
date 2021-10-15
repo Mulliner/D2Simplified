@@ -31,6 +31,7 @@ def setup_key_bindings():
 
 
 def simplify(binding: dict):
+    logger.info(f"Last clicked: {state.last_clicked}")
     if state.last_clicked == binding["key"]:
         state.last_clicked = binding["key"]
         time.sleep(0.01)
